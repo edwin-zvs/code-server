@@ -1,0 +1,26 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: code-server-deployment
+spec:
+  selector:
+    matchLabels:
+      app: code-server
+  replicas: 1
+  strategy:
+    type: "Recreate"
+  template:
+    metadata:
+      labels:
+        app: code-server
+    spec:
+      containers:
+      - name: code-server
+        image: code-server
+        imagePullPolicy: "IfNotPresent"
+        args:
+        - --auth
+        - none
+        env:
+        - name: TRIGGER_DEPLOY
+          value: "1"

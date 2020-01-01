@@ -1,0 +1,6 @@
+apiVersion: beta/v1
+deploy:
+  skaffold: {}
+ingress:
+  - serviceName: code-server
+    port: 8080
